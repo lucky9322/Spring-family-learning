@@ -1,0 +1,17 @@
+
+datasource:
+  foo:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/readinglist?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 12345678
+  bar:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/shiro?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 12345678
+
+
+car:
+  price: 12345678
+  name: 奥迪
