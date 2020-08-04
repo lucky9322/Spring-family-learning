@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucky.spring.dao.OrderCoffeeMapper">
+  <resultMap id="BaseResultMap" type="com.lucky.spring.model.OrderCoffee">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="coffee_order_id" jdbcType="BIGINT" property="coffeeOrderId" />
+    <result column="items_id" jdbcType="BIGINT" property="itemsId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, coffee_order_id, items_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order_coffee
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_order_coffee
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lucky.spring.model.OrderCoffee">
+    insert into t_order_coffee (id, coffee_order_id, items_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{coffeeOrderId,jdbcType=BIGINT}, #{itemsId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lucky.spring.model.OrderCoffee">
+    insert into t_order_coffee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="coffeeOrderId != null">
+        coffee_order_id,
+      </if>
+      <if test="itemsId != null">
+        items_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="coffeeOrderId != null">
+        #{coffeeOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="itemsId != null">
+        #{itemsId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lucky.spring.model.OrderCoffee">
+    update t_order_coffee
+    <set>
+      <if test="coffeeOrderId != null">
+        coffee_order_id = #{coffeeOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="itemsId != null">
+        items_id = #{itemsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lucky.spring.model.OrderCoffee">
+    update t_order_coffee
+    set coffee_order_id = #{coffeeOrderId,jdbcType=BIGINT},
+      items_id = #{itemsId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
