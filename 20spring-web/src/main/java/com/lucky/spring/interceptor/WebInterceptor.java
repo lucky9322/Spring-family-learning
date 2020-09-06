@@ -17,7 +17,7 @@ public class WebInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
-        log.info("WebInterceptor.preHandle:"+request.getRequestURI());
+        log.info("WebInterceptor.preHandle。 method:{}，url:{}", request.getMethod(), request.getRequestURI());
         return true;
     }
 
