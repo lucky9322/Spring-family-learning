@@ -1,0 +1,13 @@
+spring:
+    redis:
+      cluster:
+       nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383,127.0.0.1:6384
+      timeout: 3000
+      jedis:
+        pool:
+#        最大活跃数
+          max-active: 1000
+#          能够保持idle状态的最大数量
+          max-idle: 100
+          min-idle: 0
+          max-wait: 3000
